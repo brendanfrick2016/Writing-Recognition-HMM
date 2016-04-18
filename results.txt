@@ -1,0 +1,47 @@
+Brendan Frick	bjf062
+Shlok Amin	saq665
+
+Best Classifier Process:
+	
+	To build our best classifier, we tried using curvature and drawing velocity.
+	We tried each method separately (with moderate success), before combining
+	them to achieve our most succesful classifier.
+	
+	Curvature was continuous. Velocity was discrete. Velocity threshold was
+	determined by looking at the data for a natural split. From there we did 
+	multiple iterations of training while increasing/decreasing the threshold 
+	to optimize the split (i.e. we found the threshold that has a high 
+	'text' probability for less than and a low 'drawing' probability for less
+	than (and vice-versa). Our solution was not optimized but on small datasets
+	it will be equally accurate (within .1 of local optimal settings).
+
+	It is more succesful than our basic method. Although the performance is 
+	numerically worse, it is proven to be less likely to pick one state 
+	repeatedly, which happens often because of high transition probabilities.
+	Since the emission function is included to evaluate probabilities based
+	solely on features, we considered a more dynamic classifier as more 
+	successful emission function. Also, the results we included were relatively 
+	similar (within two instances). With more training data, the best method 
+	performed better because it resisted classifying all instances as one state.
+
+Trained on:
+	1585_2.3.1
+	1585_2.7.1
+	1585_3.3.1
+
+Labeled file:
+	1347_2.9.1
+	
+BASIC CONFUSION MATRIX:
+
+True Label	 Classified as Drawing	 Classified as Text	 Percent Correct
+Drawing:  		32 			  0 			1.0
+Text:  			8 			  18 			0.692307692308
+
+
+BEST CONFUSION MATRIX:
+
+True Label	 Classified as Drawing	 Classified as Text	 Percent Correct
+Drawing:  		23 			  9 			0.71875
+Text:  			1 			  25 			0.961538461538
+
